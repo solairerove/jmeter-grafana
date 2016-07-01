@@ -6,7 +6,7 @@ services:
      - "3000:3000"
 
   influxdb:
-    image: influxdb/influxdb
+    image: influx/influxd:jmeter
     ports:
       - "8083:8083"
       - "8086:8086"
