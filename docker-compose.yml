@@ -4,7 +4,10 @@ services:
     image: grafana/grafana
     ports:
      - "3000:3000"
-    hostname: localhost
+#    expose:
+#     - "3000"
+#    domainname: localhost
+#    dns: 192.168.92.82
 
   influxdb:
     image: influxdb/influxdb
@@ -12,4 +15,5 @@ services:
       - "8083:8083"
       - "8086:8086"
       - "2003:2003"
-    hostname: localhost
+#    domainname: localhost
+#    dns: 1192.168.92.82
