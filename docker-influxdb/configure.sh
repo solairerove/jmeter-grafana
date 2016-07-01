@@ -1,3 +1,4 @@
+#!/bin/bash
 
 set -m
 CONFIG_FILE="/etc/influxdb/influxdb.conf"

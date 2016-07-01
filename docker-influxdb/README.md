@@ -2,7 +2,7 @@
 
 ```shell
 ./build.sh
-./run-influx-docker.sh
+./influx-docker.sh
 ```
 ___ 
 
