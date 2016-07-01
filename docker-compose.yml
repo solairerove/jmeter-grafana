@@ -1,13 +1,13 @@
 version: '2'
 services:
-  influxdb:
-    image: influxdb/influxdb
+  grafana:
+    image: grafana/grafana
     ports:
      - "3000:3000"
     hostname: localhost
 
-  grafana:
-    image: grafana/grafana
+  influxdb:
+    image: influxdb/influxdb
     ports:
       - "8083:8083"
       - "8086:8086"
