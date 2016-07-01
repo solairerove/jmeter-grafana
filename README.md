@@ -7,17 +7,27 @@ cd docker-compose/
 ./run.sh
 ```
 
-##### Run docker-grafana:
+##### Create and start compose:
 ```shell
-docker-compose up grafana
+docker-compose up 
 ```
 
-##### Start docker-grafana:
+##### Start compose:
 ```shell
-docker start name-of-container
+docker-compose start 
 ```
 
-##### Run docker-influxdb:
+##### Create and start docker container:
 ```shell
+docker-compose up name-of-service
+```
+
+##### Start docker container:
+```shell
+docker-compose start name-of-service
+```
+
+##### Jmeter
+```
 in process...
 ```
