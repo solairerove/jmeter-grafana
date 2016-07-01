@@ -21,22 +21,43 @@
 
     <build>
         <plugins>
-            <!-- JMeter Maven Plugin -->
+            <!--&lt;!&ndash; JMeter Maven Plugin &ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>com.lazerycode.jmeter</groupId>-->
+                <!--<artifactId>jmeter-maven-plugin</artifactId>-->
+                <!--<version>1.10.1</version>-->
+                <!--<configuration>-->
+                    <!--<suppressJMeterOutput>false</suppressJMeterOutput>-->
+                    <!--<overrideRootLogLevel>debug</overrideRootLogLevel>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>jmeter-tests</id>-->
+                        <!--<phase>verify</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>jmeter</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+
+            <!--</plugin>-->
+
             <plugin>
-                <groupId>com.lazerycode.jmeter</groupId>
-                <artifactId>jmeter-maven-plugin</artifactId>
-                <version>1.10.1</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.5.0</version>
                 <executions>
                     <execution>
-                        <id>jmeter-tests</id>
-                        <phase>verify</phase>
+                        <id>run load test</id>
+                        <phase>generate-sources</phase>
                         <goals>
-                            <goal>jmeter</goal>
+                            <goal>exec</goal>
                         </goals>
+                        <configuration>
+                            <executable>$JMETER_HOME/bin/jmeter.sh -n -t ${basedir}/src/test/jmeter/load-test.jmx -l report.jtl</executable>
+                        </configuration>
                     </execution>
                 </executions>
-                <dependencies>
-                </dependencies>
             </plugin>
 
             <!-- maven-compiler-plugin -->
