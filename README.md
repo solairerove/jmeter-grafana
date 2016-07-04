@@ -1,12 +1,6 @@
 # jmeter-grafana
 Jmeter 3.0 + Grafana Latest Official + InfluxDB 0.10.3
 
-##### Run docker-compose:
-```shell
-cd docker-compose/
-./run.sh
-```
-
 ##### Create and start compose:
 ```shell
 docker-compose up 
