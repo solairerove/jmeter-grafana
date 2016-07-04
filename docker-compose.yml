@@ -6,6 +6,7 @@ services:
      - "3000:3000"
 
   influxdb:
+    build: ./docker-influxdb/
     image: influx/influxd:jmeter
     ports:
       - "8083:8083"
