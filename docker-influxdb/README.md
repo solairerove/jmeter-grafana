@@ -1,10 +1,4 @@
-##### InfluxDB image for docker:
-
-```shell
-./build.sh
-./influx-docker.sh
-```
-___ 
+### InfluxDB image for docker:
 
 ##### Exposed Links
 
@@ -15,4 +9,3 @@ InfluxDB access -> http://localhost:8086
 
 InfluxDB jmeter -> http://localhost:2003
 ```
-
