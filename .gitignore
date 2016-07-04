@@ -12,6 +12,7 @@ classes/
 
 # IntelliJ
 /out/
+jmeter.log
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/

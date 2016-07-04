@@ -19,5 +19,6 @@ docker-influxdb (README.md)
 
 ##### Jmeter
 ```
-in process...
+mvn exec:exec -Punix
+mvn exec:exec -Pwindows
 ```

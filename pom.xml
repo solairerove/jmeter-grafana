@@ -21,56 +21,61 @@
 
     <build>
         <plugins>
-            <!--&lt;!&ndash; JMeter Maven Plugin &ndash;&gt;-->
-            <!--<plugin>-->
-                <!--<groupId>com.lazerycode.jmeter</groupId>-->
-                <!--<artifactId>jmeter-maven-plugin</artifactId>-->
-                <!--<version>1.10.1</version>-->
-                <!--<configuration>-->
-                    <!--<suppressJMeterOutput>false</suppressJMeterOutput>-->
-                    <!--<overrideRootLogLevel>debug</overrideRootLogLevel>-->
-                <!--</configuration>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>jmeter-tests</id>-->
-                        <!--<phase>verify</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>jmeter</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-
-            <!--</plugin>-->
-
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.5.0</version>
+                <groupId>org.codehaus.mojo</groupId>
                 <executions>
                     <execution>
-                        <id>run load test</id>
-                        <phase>generate-sources</phase>
+                        <id>script-chmod</id>
+                        <phase>install</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <executable>$JMETER_HOME/bin/jmeter.sh -n -t ${basedir}/src/test/jmeter/load-test.jmx -l report.jtl</executable>
+                            <executable>chmod</executable>
+                            <arguments>
+                                <argument>+x</argument>
+                                <argument>src/test/jmeter/run.sh</argument>
+                            </arguments>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>Jmeter</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
                 </executions>
-            </plugin>
-
-            <!-- maven-compiler-plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <executable>src/test/jmeter/run${script.extension}</executable>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <script.extension>.bat</script.extension>
+            </properties>
+        </profile>
+        <profile>
+            <id>unix</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <properties>
+                <script.extension>.sh</script.extension>
+            </properties>
+        </profile>
+    </profiles>
 </project>
