@@ -37,9 +37,8 @@
                 <configuration>
                     <executable>${basedir}/src/test/jmeter/run${script.extension}</executable>
                     <arguments>
-                        <!--<argument>${basedir}/src/test/jmeter/tut-by-test.jmx</argument>-->
                         <argument>${basedir}/src/test/jmeter/tut-by-test.jmx</argument>
-                        <argument>${basedir}/target/jmeter/report.jtl</argument>
+                        <argument>${basedir}/src/test/jmeter/tut-by-test.jmx</argument>
                     </arguments>
                 </configuration>
             </plugin>
