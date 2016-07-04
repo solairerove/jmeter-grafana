@@ -26,20 +26,6 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <executions>
                     <execution>
-                        <id>script-chmod</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>chmod</executable>
-                            <arguments>
-                                <argument>+x</argument>
-                                <argument>src/test/jmeter/run.sh</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>Jmeter</id>
                         <phase>test</phase>
                         <goals>
@@ -48,7 +34,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <executable>src/test/jmeter/run${script.extension}</executable>
+                    <executable>${basedir}/src/test/jmeter/run${script.extension}</executable>
+                    <arguments>
+                        <argument>${basedir}/src/test/jmeter/tut-by-test.jmx</argument>
+                        <argument>${basedir}/target/jmeter/report.jtl</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>
