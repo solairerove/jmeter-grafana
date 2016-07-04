@@ -24,6 +24,7 @@
             <plugin>
                 <artifactId>exec-maven-plugin</artifactId>
                 <groupId>org.codehaus.mojo</groupId>
+                <version>1.5.0</version>
                 <executions>
                     <execution>
                         <id>Jmeter</id>
@@ -37,7 +38,8 @@
                     <executable>${basedir}/src/test/jmeter/run${script.extension}</executable>
                     <arguments>
                         <argument>${basedir}/src/test/jmeter/tut-by-test.jmx</argument>
-                        <argument>${basedir}/target/jmeter/report.jtl</argument>
+                        <argument>${basedir}/src/test/jmeter/tut-by-test.jmx</argument>
+                        <!--<argument>${basedir}/target/jmeter/report.jtl</argument>-->
                     </arguments>
                 </configuration>
             </plugin>
