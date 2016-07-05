@@ -19,54 +19,46 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_components</artifactId>
+            <version>3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
-                <artifactId>exec-maven-plugin</artifactId>
-                <groupId>org.codehaus.mojo</groupId>
-                <version>1.5.0</version>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>2.0.0</version>
+                <configuration>
+                    <testResultsTimestamp>false</testResultsTimestamp>
+                    <overrideRootLogLevel>DEBUG</overrideRootLogLevel>
+                    <suppressJMeterOutput>false</suppressJMeterOutput>
+                    <ignoreResultFailures>true</ignoreResultFailures>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>Jmeter</id>
-                        <phase>test</phase>
+                        <id>jmeter-tests</id>
+                        <phase>verify</phase>
                         <goals>
-                            <goal>exec</goal>
+                            <goal>jmeter</goal>
                         </goals>
+                        <configuration>
+                            <testFilesIncluded>
+                                <jMeterTestFile>*.jmx</jMeterTestFile>
+                            </testFilesIncluded>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <executable>${basedir}/src/test/jmeter/run${script.extension}</executable>
-                    <arguments>
-                        <argument>${basedir}/src/test/jmeter/tut-by-test.jmx</argument>
-                        <argument>${basedir}/src/test/jmeter/tut-by-test.jmx</argument>
-                    </arguments>
-                </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>windows</id>
-            <activation>
-                <os>
-                    <family>windows</family>
-                </os>
-            </activation>
-            <properties>
-                <script.extension>.bat</script.extension>
-            </properties>
-        </profile>
-        <profile>
-            <id>unix</id>
-            <activation>
-                <os>
-                    <family>unix</family>
-                </os>
-            </activation>
-            <properties>
-                <script.extension>.sh</script.extension>
-            </properties>
-        </profile>
-    </profiles>
 </project>

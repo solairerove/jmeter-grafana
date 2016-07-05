@@ -17,8 +17,6 @@ localhost:3000 - grafana (admin/admin)
 docker-influxdb (README.md)
 ```
 
-##### Jmeter
+##### PERFORMANCE TESTS
 
-```mvn exec:exec -Punix```
-or
-```mvn exec:exec -Pwindows```
+```mvn verify```
