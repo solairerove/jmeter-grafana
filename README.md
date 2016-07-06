@@ -1,5 +1,5 @@
 # jmeter-grafana
-Jmeter 3.0 + Grafana Latest Official + InfluxDB 0.10.3
+Jmeter 3.0 + Grafana Latest Official + InfluxDB 0.13.0
 
 ##### Build images
 ```shell
