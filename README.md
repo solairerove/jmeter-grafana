@@ -1,4 +1,4 @@
-# jmeter-grafana
+# jmeter-grafana (Dead)
 Jmeter 3.0 + Grafana Latest Official + InfluxDB 0.13.0
 
 ##### Build images
